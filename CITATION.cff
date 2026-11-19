@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Code and benchmark generator for: Small groups below the resolution floor: masking, a detection boundary, and an exact scan"
+type: software
+authors:
+  - family-names: Coutinho
+    given-names: Felipe Provezano
+    orcid: "https://orcid.org/0000-0001-7206-5856"
+license: MIT
+repository-code: "https://github.com/provezano/small-groups-resolution-floor"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24286673
+    description: "Archived deposit of this code and benchmark generator (all versions)"
+# The paper is under review and has no DOI yet; it will be added under references: when it does.

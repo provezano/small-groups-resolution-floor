@@ -1,0 +1,834 @@
+{
+ "benchmark": "tinybench",
+ "version": "1.0",
+ "track": "synthetic/iso",
+ "seeds": "500-504",
+ "cap": 0.5,
+ "methods": {
+  "cts3_v5": {
+   "isolated/high": {
+    "recall": 0.933,
+    "ci": [
+     0.894,
+     0.967
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.861,
+    "ci": [
+     0.811,
+     0.911
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.744,
+    "ci": [
+     0.7,
+     0.789
+    ]
+   },
+   "touching/high": {
+    "recall": 0.6,
+    "ci": [
+     0.544,
+     0.65
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.339,
+    "ci": [
+     0.289,
+     0.383
+    ]
+   },
+   "touching/low": {
+    "recall": 0.006,
+    "ci": [
+     0.0,
+     0.017
+    ]
+   },
+   "inside/high": {
+    "recall": 0.806,
+    "ci": [
+     0.733,
+     0.878
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.761,
+    "ci": [
+     0.7,
+     0.833
+    ]
+   },
+   "inside/low": {
+    "recall": 0.628,
+    "ci": [
+     0.55,
+     0.706
+    ]
+   }
+  },
+  "cts3_v5_bh": {
+   "isolated/high": {
+    "recall": 0.856,
+    "ci": [
+     0.794,
+     0.911
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.794,
+    "ci": [
+     0.728,
+     0.861
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.728,
+    "ci": [
+     0.694,
+     0.761
+    ]
+   },
+   "touching/high": {
+    "recall": 0.75,
+    "ci": [
+     0.683,
+     0.794
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.444,
+    "ci": [
+     0.4,
+     0.489
+    ]
+   },
+   "touching/low": {
+    "recall": 0.039,
+    "ci": [
+     0.006,
+     0.089
+    ]
+   },
+   "inside/high": {
+    "recall": 0.828,
+    "ci": [
+     0.75,
+     0.906
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.8,
+    "ci": [
+     0.722,
+     0.878
+    ]
+   },
+   "inside/low": {
+    "recall": 0.656,
+    "ci": [
+     0.567,
+     0.744
+    ]
+   }
+  },
+  "cts3_v5_hybrid": {
+   "isolated/high": {
+    "recall": 0.872,
+    "ci": [
+     0.806,
+     0.922
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.844,
+    "ci": [
+     0.789,
+     0.9
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.767,
+    "ci": [
+     0.728,
+     0.8
+    ]
+   },
+   "touching/high": {
+    "recall": 0.722,
+    "ci": [
+     0.622,
+     0.783
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.45,
+    "ci": [
+     0.4,
+     0.494
+    ]
+   },
+   "touching/low": {
+    "recall": 0.044,
+    "ci": [
+     0.006,
+     0.094
+    ]
+   },
+   "inside/high": {
+    "recall": 0.828,
+    "ci": [
+     0.75,
+     0.906
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.794,
+    "ci": [
+     0.717,
+     0.872
+    ]
+   },
+   "inside/low": {
+    "recall": 0.656,
+    "ci": [
+     0.567,
+     0.739
+    ]
+   }
+  },
+  "lof+group": {
+   "isolated/high": {
+    "recall": 0.822,
+    "ci": [
+     0.789,
+     0.861
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.811,
+    "ci": [
+     0.772,
+     0.856
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.783,
+    "ci": [
+     0.728,
+     0.844
+    ]
+   },
+   "touching/high": {
+    "recall": 0.072,
+    "ci": [
+     0.039,
+     0.117
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.039,
+    "ci": [
+     0.011,
+     0.067
+    ]
+   },
+   "touching/low": {
+    "recall": 0.311,
+    "ci": [
+     0.078,
+     0.372
+    ]
+   },
+   "inside/high": {
+    "recall": 0.717,
+    "ci": [
+     0.289,
+     0.794
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.739,
+    "ci": [
+     0.222,
+     0.806
+    ]
+   },
+   "inside/low": {
+    "recall": 0.733,
+    "ci": [
+     0.667,
+     0.794
+    ]
+   }
+  },
+  "mccatch_reimpl": {
+   "isolated/high": {
+    "recall": 0.878,
+    "ci": [
+     0.789,
+     0.956
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.844,
+    "ci": [
+     0.778,
+     0.906
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.561,
+    "ci": [
+     0.417,
+     0.678
+    ]
+   },
+   "touching/high": {
+    "recall": 0.25,
+    "ci": [
+     0.083,
+     0.267
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.161,
+    "ci": [
+     0.022,
+     0.189
+    ]
+   },
+   "touching/low": {
+    "recall": 0.017,
+    "ci": [
+     0.011,
+     0.033
+    ]
+   },
+   "inside/high": {
+    "recall": 0.111,
+    "ci": [
+     0.072,
+     0.15
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.078,
+    "ci": [
+     0.05,
+     0.111
+    ]
+   },
+   "inside/low": {
+    "recall": 0.011,
+    "ci": [
+     0.0,
+     0.022
+    ]
+   }
+  },
+  "sccad_official": {
+   "isolated/high": {
+    "recall": 0.322,
+    "ci": [
+     0.25,
+     0.394
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.317,
+    "ci": [
+     0.261,
+     0.372
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.283,
+    "ci": [
+     0.217,
+     0.344
+    ]
+   },
+   "touching/high": {
+    "recall": 0.039,
+    "ci": [
+     0.017,
+     0.061
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.011,
+    "ci": [
+     0.0,
+     0.022
+    ]
+   },
+   "touching/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "inside/high": {
+    "recall": 0.1,
+    "ci": [
+     0.067,
+     0.139
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.056,
+    "ci": [
+     0.028,
+     0.089
+    ]
+   },
+   "inside/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "gapclust_port": {
+   "isolated/high": {
+    "recall": 0.733,
+    "ci": [
+     0.683,
+     0.789
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.75,
+    "ci": [
+     0.706,
+     0.794
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.689,
+    "ci": [
+     0.633,
+     0.739
+    ]
+   },
+   "touching/high": {
+    "recall": 0.05,
+    "ci": [
+     0.022,
+     0.078
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.028,
+    "ci": [
+     0.006,
+     0.05
+    ]
+   },
+   "touching/low": {
+    "recall": 0.006,
+    "ci": [
+     0.0,
+     0.017
+    ]
+   },
+   "inside/high": {
+    "recall": 0.022,
+    "ci": [
+     0.011,
+     0.028
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.017,
+    "ci": [
+     0.006,
+     0.028
+    ]
+   },
+   "inside/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "gapclust_port_k30": {
+   "isolated/high": {
+    "recall": 0.7,
+    "ci": [
+     0.639,
+     0.761
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.722,
+    "ci": [
+     0.667,
+     0.772
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.672,
+    "ci": [
+     0.622,
+     0.722
+    ]
+   },
+   "touching/high": {
+    "recall": 0.378,
+    "ci": [
+     0.328,
+     0.428
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.261,
+    "ci": [
+     0.217,
+     0.311
+    ]
+   },
+   "touching/low": {
+    "recall": 0.1,
+    "ci": [
+     0.056,
+     0.144
+    ]
+   },
+   "inside/high": {
+    "recall": 0.1,
+    "ci": [
+     0.067,
+     0.139
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.056,
+    "ci": [
+     0.028,
+     0.089
+    ]
+   },
+   "inside/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "oracle": {
+   "isolated/high": {
+    "recall": 0.9,
+    "ci": [
+     0.856,
+     0.944
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.867,
+    "ci": [
+     0.822,
+     0.911
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.75,
+    "ci": [
+     0.706,
+     0.794
+    ]
+   },
+   "touching/high": {
+    "recall": 0.689,
+    "ci": [
+     0.639,
+     0.744
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.517,
+    "ci": [
+     0.467,
+     0.572
+    ]
+   },
+   "touching/low": {
+    "recall": 0.161,
+    "ci": [
+     0.117,
+     0.2
+    ]
+   },
+   "inside/high": {
+    "recall": 0.878,
+    "ci": [
+     0.833,
+     0.922
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.789,
+    "ci": [
+     0.722,
+     0.856
+    ]
+   },
+   "inside/low": {
+    "recall": 0.439,
+    "ci": [
+     0.356,
+     0.517
+    ]
+   }
+  },
+  "gapclust_official_sq": {
+   "isolated/high": {
+    "recall": 0.65,
+    "ci": [
+     0.583,
+     0.717
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.689,
+    "ci": [
+     0.639,
+     0.733
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.639,
+    "ci": [
+     0.583,
+     0.689
+    ]
+   },
+   "touching/high": {
+    "recall": 0.028,
+    "ci": [
+     0.006,
+     0.05
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.006,
+    "ci": [
+     0.0,
+     0.017
+    ]
+   },
+   "touching/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   },
+   "inside/high": {
+    "recall": 0.061,
+    "ci": [
+     0.039,
+     0.083
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.039,
+    "ci": [
+     0.028,
+     0.061
+    ]
+   },
+   "inside/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "gapclust_official_sq_k30": {
+   "isolated/high": {
+    "recall": 0.644,
+    "ci": [
+     0.583,
+     0.7
+    ]
+   },
+   "isolated/mid": {
+    "recall": 0.672,
+    "ci": [
+     0.628,
+     0.722
+    ]
+   },
+   "isolated/low": {
+    "recall": 0.644,
+    "ci": [
+     0.583,
+     0.706
+    ]
+   },
+   "touching/high": {
+    "recall": 0.128,
+    "ci": [
+     0.1,
+     0.167
+    ]
+   },
+   "touching/mid": {
+    "recall": 0.067,
+    "ci": [
+     0.044,
+     0.089
+    ]
+   },
+   "touching/low": {
+    "recall": 0.028,
+    "ci": [
+     0.011,
+     0.05
+    ]
+   },
+   "inside/high": {
+    "recall": 0.1,
+    "ci": [
+     0.067,
+     0.139
+    ]
+   },
+   "inside/mid": {
+    "recall": 0.056,
+    "ci": [
+     0.028,
+     0.089
+    ]
+   },
+   "inside/low": {
+    "recall": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ]
+   }
+  }
+ },
+ "notes": {
+  "mccatch_reimpl": "our reimplementation",
+  "sccad_official": "authors' code, floor 10",
+  "gapclust_port": "core port, Euclidean kNN, k=200",
+  "gapclust_port_k30": "core port, Euclidean kNN, k=30",
+  "gapclust_official_sq": "core port, squared kNN as official, k=200",
+  "gapclust_official_sq_k30": "core port, squared kNN as official, k=30",
+  "oracle": "true background density; reference, not a contestant"
+ },
+ "paired": {
+  "isolated/high": {
+   "diff": 0.056,
+   "p_perm": 0.375,
+   "diff_ci": [
+    -0.044,
+    0.167
+   ],
+   "best": "cts3_v5",
+   "runner_up": "mccatch_reimpl",
+   "p_holm": 1.0
+  },
+  "isolated/mid": {
+   "diff": 0.017,
+   "p_perm": 0.8125,
+   "diff_ci": [
+    -0.089,
+    0.1
+   ],
+   "best": "cts3_v5",
+   "runner_up": "mccatch_reimpl",
+   "p_holm": 1.0
+  },
+  "isolated/low": {
+   "diff": 0.017,
+   "p_perm": 0.8358,
+   "diff_ci": [
+    -0.056,
+    0.089
+   ],
+   "best": "lof+group",
+   "runner_up": "cts3_v5_hybrid",
+   "p_holm": 1.0
+  },
+  "touching/high": {
+   "diff": 0.372,
+   "p_perm": 0.0004,
+   "diff_ci": [
+    0.283,
+    0.439
+   ],
+   "best": "cts3_v5_bh",
+   "runner_up": "gapclust_port_k30",
+   "p_holm": 0.0036
+  },
+  "touching/mid": {
+   "diff": 0.189,
+   "p_perm": 0.0212,
+   "diff_ci": [
+    0.117,
+    0.261
+   ],
+   "best": "cts3_v5_hybrid",
+   "runner_up": "gapclust_port_k30",
+   "p_holm": 0.1484
+  },
+  "touching/low": {
+   "diff": 0.211,
+   "p_perm": 0.0063,
+   "diff_ci": [
+    -0.028,
+    0.283
+   ],
+   "best": "lof+group",
+   "runner_up": "gapclust_port_k30",
+   "p_holm": 0.0504
+  },
+  "inside/high": {
+   "diff": 0.111,
+   "p_perm": 0.0674,
+   "diff_ci": [
+    0.033,
+    0.533
+   ],
+   "best": "cts3_v5_bh",
+   "runner_up": "lof+group",
+   "p_holm": 0.337
+  },
+  "inside/mid": {
+   "diff": 0.061,
+   "p_perm": 0.2263,
+   "diff_ci": [
+    -0.006,
+    0.539
+   ],
+   "best": "cts3_v5_bh",
+   "runner_up": "lof+group",
+   "p_holm": 0.9052
+  },
+  "inside/low": {
+   "diff": 0.078,
+   "p_perm": 0.0558,
+   "diff_ci": [
+    0.011,
+    0.15
+   ],
+   "best": "lof+group",
+   "runner_up": "cts3_v5_bh",
+   "p_holm": 0.3348
+  }
+ }
+}

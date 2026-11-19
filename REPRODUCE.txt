@@ -1,0 +1,78 @@
+REPRODUCE (Paper 1 deposit; v3). Python 3.11; package versions in requirements.txt.
+Run from the unzipped top folder. Use PYTHONPATH=. so that "clustering" imports.
+Status key: RAN = executed on the staged copy and checked; SYNTAX = only parsed / --help; NOT RUN.
+
+0. Licence: code MIT, generated data CC BY 4.0 (LICENSE; tinybench/LICENSE). See README.txt.
+
+1. Environment
+   python3.11 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt     [NOT RUN: needs network;
+   the tests were run in an existing environment with the versions listed]
+
+2. Unit tests of the shipped modules
+   PYTHONPATH=. python -m pytest -q clustering/tests                                       [RAN: 127 passed, 5 skipped, ~55 s]
+   cd tinybench && PYTHONPATH=src:.. python -m pytest -q tests                              [RAN: 18 passed, 1 skipped; with PYTHONPATH=src only: 17 passed, 2 skipped]
+   The skips are the GapClust tests (see section 2b) and, with PYTHONPATH=src only, one test that needs the clustering package.
+   (tinybench was not pip-installed; PYTHONPATH=src was used. "pip install -e tinybench" is NOT RUN.)
+
+2b. GAPCLUST IS NOT IN THIS DEPOSIT (licensing constraint, not a missing result)
+   The official GapClust R package (github.com/fabotao/GapClust) is declared GPL-3 and has no LICENSE file. The Python ports of it
+   that were used for the paper (clustering/eval/nature/tiny_baselines.py, p3_gapclust_full.py, and the copy in tinybench) are derived
+   works and cannot be distributed under this deposit's MIT licence, so they were removed. gapclust_raw, gapclust_groups,
+   gapclust, gapclust_sweep and the functions of p3_gapclust_full are stubs that raise GapClustUnavailable with an explanation.
+   To use them: obtain the official package, write your own port in a Python file defining
+   gapclust_raw(Z, k, squared) -> (skew, top_ave, v1k, idx) and gapclust_groups(skew, top_ave, v1k, idx, thr), and set GAPCLUST_PY.
+   (Stub delegation was checked with a trivial dummy file; no GapClust logic was run.)
+   Stored results made with the removed port are kept, but CANNOT be regenerated from the bundle alone:
+     tinybench/results/leaderboard_v1.0_s500_cap0.25.{json,md} and ..._cap0.5.{json,md}: rows gapclust_port, gapclust_port_k30,
+       gapclust_official_sq, gapclust_official_sq_k30
+     results/pass2_frontier_stats.json, pass2_perscene_s800/s810/s820.json: gapclust_port_k30, gapclust_official_sq_k30
+     results/audit_recheck.json: gapclust_port*, gapclust_official_sq_k30, gapclust_k30 families
+     results/rgt_real_a.json, rgt_real_b.json, rgt_predicted_vs_actual.json: gapclust_k30
+   The statistics and figures that only READ these stored files (make_figures.py, audit_recheck --only pass2 on the shipped
+   per-scene files) are unaffected. Any runner that CALLS GapClust (run_kdd, run_sc, scale_real, rgt_real, p3_tracks, tail_bench,
+   p3_perscene, pass2_frontier, ...) fails at that call unless GAPCLUST_PY is set.
+   Other baselines: see SCAN_REPORT_v3.txt, "Third-party baselines".
+
+3. Figures 2 to 4 from the stored result files
+   PYTHONPATH=. python figures/make_figures.py        writes figures/regenerated/*.pdf, *.png
+                                                      [RAN: the extracted text of the three PDFs is identical to
+                                                       figures/paper/*.pdf. LIMITATION: PDF bytes and pixels were
+                                                       not compared.]
+   Figure 4: its 18 cell values are typed into make_figures.py (labelled TRANSCRIBED there). Each was traced to
+   results/p1math_null.json (mean rejections at p <= 1e-3, divided by 22400 tests per scene, x 1000):
+   python figures/check_fig4_cells.py                 [RAN: all 18 cells agree with the file, max difference 0.005 on
+                                                       values of 0.06 to 9.8; they are the file's values rounded to 2 decimals]
+
+4. Figure 1 (scikit-learn comparison)
+   PYTHONPATH=. python figures/skl_compare.py         writes out/fig4_sklearn_planted.png, out/sklearn_compare.json
+                                                      [RAN: finishes in seconds.]
+   WHICH FIGURE IS WHICH: figures/paper/fig_opening_sklearn.png is the figure printed in the paper. It was produced
+   before the fringe fix (a later correction to how near-duplicate points are handled in the method, tiny_methods.py,
+   option fix="joint"). skl_compare.py calls the method as shipped, i.e. with the fix, so its output is the corrected
+   version and it differs from the paper figure. The difference comes from that fix; it is not a discrepancy in
+   the paper's result, and the pre-fix version is not reproduced here. The two images were not compared pixel by pixel.
+
+5. Figure-3 family from stored per-scene files
+   PYTHONPATH=. python -m clustering.eval.nature.audit_recheck --help    [SYNTAX: argparse help only]
+   The per-scene files for this family are in results/ (pass2_perscene_s800/s810/s820.json). The full
+   audit_recheck run was NOT RUN here; the other families it knows need files that are not shipped.
+
+5b. NETWORK ACCESS (public data fetched on demand)
+   Command: python -m clustering.eval.nature.run_kdd   (no arguments; the module has no argparse, so ANY argument,
+   including --help, starts the analysis and the download).
+   What it fetches: the KDD Cup 99 "10 percent" file through scikit-learn fetch_kddcup99, about 3.1 MB, from its
+   original public host, into the folder given by TG_DATA (default: data/ in the deposit root). Nothing is uploaded or sent.
+   Other loaders (scale_data, scale_real, tinybench real tracks) likewise fetch public data sets on first use.
+   The depositor's checking run triggered this once by accident; the file was deleted afterwards.
+
+6. Experiments from scratch (generate scenes, run methods)
+   python -m clustering.eval.nature.scale_run --help ; pass2_frontier --help ; p3_perscene --help ;
+   tinybench_cli --help ; rgt_real --help                                              [SYNTAX: argparse help only]
+   Full runs are NOT RUN. They need hours of compute, public data sets that the loaders download on first use
+   (set TG_DATA to a writable folder), and for some baselines a Java and an R toolchain that are not shipped.
+   WARNING: several runner modules (for example run_kdd) have no argparse and start the analysis, including a
+   data download, when executed with any argument. Read the module header first.
+
+7. Benchmark generator
+   cd tinybench; PYTHONPATH=src python -m tinybench generate --placement inside --contrast low --d 10 --seed 500 --shape boot --out scene.npz
+   [NOT RUN as written; the generator is covered by tinybench/tests]
