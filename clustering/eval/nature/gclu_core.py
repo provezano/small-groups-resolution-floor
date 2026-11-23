@@ -1,9 +1,12 @@
 """
 GCLU: a general-purpose clusterer built from the CTS ideas, with a calibrated answer at every scale.
 
-Two scales, two valid tests (scale-split certification):
+Two scales, one test each (scale-split certification):
 1. Tiny groups (m <= 15): the CTS scan (exact local Beta null, fringe-fixed collapse) on the FULL data at alpha / 2.
-   The candidate family (every kNN ball) is fixed before looking at the data, so no split is needed (Theorem 2a).
+   The candidate family is every kNN ball, which is fixed before looking at the data, and for that reason no split
+   is needed. But this branch delegates to cts_fringe, which divides by the count of pairs the collapse leaves
+   eligible, not by that fixed family; the free-selection theorem of the paper (Theorem 16 as submitted) asks for
+   the fixed family, so the premise does not hold as run and the paper does not bound the cost in level.
 2. Large clusters: Poisson thinning. A random half X1 proposes clusters (HDBSCAN, leaf selection, over-segmenting);
    the other half X2 certifies each split with an exact, intensity-free dip test. Under an inhomogeneous Poisson
    model the two halves are independent Poisson processes with the same intensity shape (thinning theorem), so any

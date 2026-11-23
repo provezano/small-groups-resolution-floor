@@ -220,8 +220,10 @@ def cts_fringe(Z, fix="palm", rule="bonferroni", alpha=S.ALPHA, max_m=S.MAX_M, k
       (the family's own spread, upper-bounded), iterated once;
     - "two_scale": a second border pass at a looser core scale: a free point with r_10 <= two_scale x eps that lies
       within eps of a collapsed point joins its family;
-    - "sep": drop candidates whose gap to the nearest collapsed point is below sep x r_(m-1) (a selection filter,
-      valid by Theorem 2a under Bonferroni)."""
+    - "sep": drop candidates whose gap to the nearest collapsed point is below sep x r_(m-1) (a selection filter;
+      the free-selection theorem of the paper (Theorem 16 as submitted) holds only for a candidate family fixed
+      before the scores are seen, and the divisor used here (nt, over the reduced set the collapse leaves) is the
+      realised count, so that premise does not hold as run and the paper does not bound the cost in level)."""
     t0 = time.time()
     n = len(Z)
     kk = S.kk_for(n, max_m, k_bg)

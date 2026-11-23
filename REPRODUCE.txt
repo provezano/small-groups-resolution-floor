@@ -1,4 +1,4 @@
-REPRODUCE (Paper 1 deposit; v3). Python 3.11; package versions in requirements.txt.
+REPRODUCE (Paper 1 deposit; v4). Python 3.11; package versions in requirements.txt.
 Run from the unzipped top folder. Use PYTHONPATH=. so that "clustering" imports.
 Status key: RAN = executed on the staged copy and checked; SYNTAX = only parsed / --help; NOT RUN.
 

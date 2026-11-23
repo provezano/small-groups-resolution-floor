@@ -156,7 +156,10 @@ def v5_labels(parts, alpha, base=None):
 
 def sep_labels(parts, alpha, base=None, families=("ratio", "sep")):
     """Two exact families, Bonferroni over both: a candidate is significant if its ratio p or its separation p is below
-    alpha / (F T). Greedy order: the larger of the two -log p (any order is valid under Bonferroni, Theorem 2a)."""
+    alpha / (F T). Greedy order: the larger of the two -log p. The order is free under Bonferroni by the
+    free-selection theorem of the paper (Theorem 16 as submitted) only for a candidate family fixed before the
+    scores are seen; T here is parts["n_tests"], the realised count over the reduced set the collapse leaves, so
+    that premise does not hold as run."""
     F = len(families)
     thr = -np.log(alpha / (F * max(1, parts["n_tests"])))
     s = np.zeros(len(parts["score"]))

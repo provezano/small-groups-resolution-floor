@@ -1,8 +1,11 @@
 """
-Second-pass tiny-bench frontier with per-scene scores: the frozen design, fresh seeds, calibrated selection rules.
+Second-pass tiny-bench frontier with per-scene scores: the frozen design, fresh seeds, the selection rules under test.
 
 Methods (grids as in stage 8 / p3_perscene):
-- cts3_v5      CTS v5, Bonferroni (the default; group-level error proved);
+- cts3_v5      CTS v5, Bonferroni (the default; the group-level bound of the paper's free-selection theorem
+                (Theorem 16 as submitted) needs a candidate family fixed before the scores are seen, and these
+                runs divide by the realised count of candidates the collapse leaves, so the paper does not
+                bound the cost in level);
 - cts3_v5_by   CTS v5 + respect-base + Benjamini-Yekutieli (FDR under any dependence, candidate level);
 - cts3_v5_bh   CTS v5 + respect-base + Benjamini-Hochberg (exploratory: no group-level guarantee);
 - gapclust_port_k30 (plain kNN distances, the stage-8 variant) and gapclust_official_sq_k30 (squared, as official);

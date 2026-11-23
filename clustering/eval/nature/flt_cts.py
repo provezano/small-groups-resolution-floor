@@ -22,7 +22,10 @@ Filters (all use no labels):
   ranked like "ring" (top q share, normalised by the count that passes).
 - "sf": a scale-free outer statistic, (r_n / r_kk)^d ~ Beta(n, kk - n) exactly under the null; pass if its CDF <= q.
   Pivotal, so its pass rate is exactly q under the null with no normalisation (an exactly valid filter).
-Selection among significant candidates is greedy by score, as in v5 (free under any Bonferroni-type rule, Theorem 2a).
+Selection among significant candidates is greedy by score, as in v5. That is free under a Bonferroni-type rule by
+the free-selection theorem of the paper (Theorem 16 as submitted) only for a candidate family fixed before the
+scores are seen; T here is P["n_tests"], the realised count over the reduced set the collapse leaves, so that
+premise does not hold as run.
 """
 import numpy as np
 from scipy.stats import beta as beta_dist
@@ -119,7 +122,8 @@ def flt_labels(P, alpha, q=0.02, eta=0.5, stat="ring", base=None, size_prior=Non
     key = S - thr
     if guide is not None:
         # calibrated use of an HDBSCAN 3/3 tree: among significant candidates only, take first those that match one
-        # of its small clusters (Jaccard >= 0.5). Valid: selection among rejections is free (Theorem 2a).
+        # of its small clusters (Jaccard >= 0.5). Selection among rejections is free only for a candidate family
+        # fixed before the scores are seen (see the module docstring), which does not hold as run.
         key = key.copy()
         R = P["R"]
         for i in np.flatnonzero(ok):
