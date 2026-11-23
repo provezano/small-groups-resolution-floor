@@ -4,9 +4,9 @@ Felipe Provezano Coutinho — [ORCID 0000-0001-7206-5856](https://orcid.org/0000
 
 This repository holds the code behind the paper's experiments and figures, the generator for its synthetic benchmark (`tinybench`), and a few stored result files.
 
-Density-based clustering (HDBSCAN, DBSCAN, OPTICS and their relatives) cannot return a group of 2 to 15 points when that group sits close to a larger structure. The paper calls this *masking*. The cause is structural, not a tuning problem. A single outlying point between the small group and the background makes every setting of the algorithm miss it.
+Groups of 2 to 15 points can be missed for reasons no tuning fixes. The paper calls this *masking* and proves it for HDBSCAN: given a group of at most the neighbourhood size, with one member that has a denser outsider nearby, no level, selection rule or minimum cluster size returns the group. The cause is structural, not a setting you have not tried yet.
 
-The paper does three things. It characterises masking. It proves a *detection boundary*: a radius below which a tiny group is recoverable and above which no method can recover it. And it gives a test, **CTS**, that scans each point's neighbourhoods under a null that assumes no density model. Each returned group comes with a p-value rather than a tuning story.
+The paper does three things. It characterises masking. It proves a *detection boundary* for its own local scan: over a Poisson background, no test detects such a group beyond a constant multiple of that radius. And it gives the matching test, **CTS** (collapse, then scan), an exact density-free ratio of neighbour distances with a false-alarm bound under uneven density. Each returned group comes with a p-value rather than a tuning story.
 
 ![Masking sketch and recovery rates across 339 real groups](figures/readme/masking.png)
 
@@ -22,7 +22,7 @@ CTS runs in four steps. First, it collapses near-duplicate points so duplicate s
 
 ## The detection boundary
 
-Recoverability depends on group radius relative to the background, not on parameter luck. In planted experiments, detection drops sharply from 1.0 to 0.0 as the radius crosses the predicted boundary, in the same place across background sizes from 10^3 to 10^6 points. On real corpora, the margin to this boundary tracks what CTS, GapClust and LOF + group each find. Below the boundary, neither CTS nor the baselines recover the groups.
+Recoverability depends on the group's radius relative to the background, not on parameter luck. In planted experiments, detection drops sharply from 1.0 to 0.0 as that radius crosses the predicted boundary, in the same place across background sizes from 10^3 to 10^6 points. On real corpora the margin to the boundary tracks what CTS, GapClust and LOF + group each find, and below it none of the three recovers the groups.
 
 ![Detection boundary on planted and real groups](figures/readme/boundary.png)
 
